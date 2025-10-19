@@ -22,180 +22,191 @@ function AddProductPage() {
     const [message, setMessage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
     const handleSubmit = async (e)=>{
         e.preventDefault();
-        const product = {
-            name,
-            description,
-            price,
-            stock
-        };
+        setMessage('');
+        const apiUrl = ("TURBOPACK compile-time value", "https://localhost:7245") || 'https://localhost:7245';
         try {
-            const res = await fetch("".concat(("TURBOPACK compile-time value", "https://localhost:7245/api"), "/products"), {
+            const response = await fetch("".concat(apiUrl, "/api/products"), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(product)
+                body: JSON.stringify({
+                    name,
+                    description,
+                    price,
+                    stock
+                })
             });
-            if (!res.ok) throw new Error('Ürün eklenemedi');
-            setMessage('Ürün başarıyla eklendi!');
-            setName('');
-            setDescription('');
-            setPrice(0);
-            setStock(0);
-        } catch (err) {
-            console.error(err);
-            setMessage('Hata: ' + err.message);
+            if (response.ok) {
+                setMessage('✅ Ürün başarıyla eklendi!');
+                setName('');
+                setDescription('');
+                setPrice(0);
+                setStock(0);
+            } else {
+                const errorText = await response.text();
+                setMessage("❌ Hata: ".concat(errorText));
+            }
+        } catch (error) {
+            console.error('Ürün ekleme hatası:', error);
+            setMessage('❌ Sunucuya bağlanılamadı.');
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
-        className: "p-8 max-w-md mx-auto",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                className: "text-3xl font-bold mb-6",
-                children: "Yeni Ürün Ekle"
-            }, void 0, false, {
-                fileName: "[project]/app/add-product/page.tsx",
-                lineNumber: 40,
-                columnNumber: 7
-            }, this),
-            message && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "mb-4 text-green-600",
-                children: message
-            }, void 0, false, {
-                fileName: "[project]/app/add-product/page.tsx",
-                lineNumber: 42,
-                columnNumber: 19
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
-                onSubmit: handleSubmit,
-                className: "space-y-4",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                className: "block font-semibold mb-1",
-                                children: "Ürün Adı"
-                            }, void 0, false, {
-                                fileName: "[project]/app/add-product/page.tsx",
-                                lineNumber: 46,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                type: "text",
-                                value: name,
-                                onChange: (e)=>setName(e.target.value),
-                                required: true,
-                                className: "w-full border p-2 rounded"
-                            }, void 0, false, {
-                                fileName: "[project]/app/add-product/page.tsx",
-                                lineNumber: 47,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/app/add-product/page.tsx",
-                        lineNumber: 45,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                className: "block font-semibold mb-1",
-                                children: "Açıklama"
-                            }, void 0, false, {
-                                fileName: "[project]/app/add-product/page.tsx",
-                                lineNumber: 57,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
-                                value: description,
-                                onChange: (e)=>setDescription(e.target.value),
-                                required: true,
-                                className: "w-full border p-2 rounded"
-                            }, void 0, false, {
-                                fileName: "[project]/app/add-product/page.tsx",
-                                lineNumber: 58,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/app/add-product/page.tsx",
-                        lineNumber: 56,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                className: "block font-semibold mb-1",
-                                children: "Fiyat (₺)"
-                            }, void 0, false, {
-                                fileName: "[project]/app/add-product/page.tsx",
-                                lineNumber: 67,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                type: "number",
-                                value: price,
-                                onChange: (e)=>setPrice(Number(e.target.value)),
-                                required: true,
-                                className: "w-full border p-2 rounded"
-                            }, void 0, false, {
-                                fileName: "[project]/app/add-product/page.tsx",
-                                lineNumber: 68,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/app/add-product/page.tsx",
-                        lineNumber: 66,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                className: "block font-semibold mb-1",
-                                children: "Stok"
-                            }, void 0, false, {
-                                fileName: "[project]/app/add-product/page.tsx",
-                                lineNumber: 78,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                type: "number",
-                                value: stock,
-                                onChange: (e)=>setStock(Number(e.target.value)),
-                                required: true,
-                                className: "w-full border p-2 rounded"
-                            }, void 0, false, {
-                                fileName: "[project]/app/add-product/page.tsx",
-                                lineNumber: 79,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/app/add-product/page.tsx",
-                        lineNumber: 77,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                        type: "submit",
-                        className: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700",
-                        children: "Ekle"
-                    }, void 0, false, {
-                        fileName: "[project]/app/add-product/page.tsx",
-                        lineNumber: 88,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/app/add-product/page.tsx",
-                lineNumber: 44,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
+        className: "p-8",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "max-w-xl mx-auto mt-10 bg-white shadow-md rounded-lg p-6",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                    className: "text-2xl font-bold mb-6 text-gray-800",
+                    children: "Yeni Ürün Ekle"
+                }, void 0, false, {
+                    fileName: "[project]/app/add-product/page.tsx",
+                    lineNumber: 52,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
+                    onSubmit: handleSubmit,
+                    className: "space-y-4",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                    className: "block font-medium text-gray-700",
+                                    children: "Ürün Adı"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/add-product/page.tsx",
+                                    lineNumber: 56,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                    type: "text",
+                                    value: name,
+                                    onChange: (e)=>setName(e.target.value),
+                                    required: true,
+                                    className: "w-full border rounded-md p-2 mt-1"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/add-product/page.tsx",
+                                    lineNumber: 57,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/app/add-product/page.tsx",
+                            lineNumber: 55,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                    className: "block font-medium text-gray-700",
+                                    children: "Açıklama"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/add-product/page.tsx",
+                                    lineNumber: 67,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
+                                    value: description,
+                                    onChange: (e)=>setDescription(e.target.value),
+                                    className: "w-full border rounded-md p-2 mt-1"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/add-product/page.tsx",
+                                    lineNumber: 68,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/app/add-product/page.tsx",
+                            lineNumber: 66,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                    className: "block font-medium text-gray-700",
+                                    children: "Fiyat (₺)"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/add-product/page.tsx",
+                                    lineNumber: 76,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                    type: "number",
+                                    value: price,
+                                    onChange: (e)=>setPrice(e.target.value === '' ? 0 : parseFloat(e.target.value)),
+                                    required: true,
+                                    className: "w-full border rounded-md p-2 mt-1"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/add-product/page.tsx",
+                                    lineNumber: 77,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/app/add-product/page.tsx",
+                            lineNumber: 75,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                    className: "block font-medium text-gray-700",
+                                    children: "Stok Miktarı"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/add-product/page.tsx",
+                                    lineNumber: 89,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                    type: "number",
+                                    value: stock,
+                                    onChange: (e)=>setStock(e.target.value === '' ? 0 : parseInt(e.target.value)),
+                                    required: true,
+                                    className: "w-full border rounded-md p-2 mt-1"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/add-product/page.tsx",
+                                    lineNumber: 90,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/app/add-product/page.tsx",
+                            lineNumber: 88,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            type: "submit",
+                            className: "w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md",
+                            children: "Ürün Ekle"
+                        }, void 0, false, {
+                            fileName: "[project]/app/add-product/page.tsx",
+                            lineNumber: 101,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/app/add-product/page.tsx",
+                    lineNumber: 54,
+                    columnNumber: 9
+                }, this),
+                message && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    className: "mt-4 text-center font-medium text-gray-700",
+                    children: message
+                }, void 0, false, {
+                    fileName: "[project]/app/add-product/page.tsx",
+                    lineNumber: 110,
+                    columnNumber: 11
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/app/add-product/page.tsx",
+            lineNumber: 51,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
         fileName: "[project]/app/add-product/page.tsx",
-        lineNumber: 39,
+        lineNumber: 49,
         columnNumber: 5
     }, this);
 }
