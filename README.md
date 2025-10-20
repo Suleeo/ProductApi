@@ -133,6 +133,72 @@ Uygulama `http://localhost:3000` adresinde çalışacaktır.
 
 ---
 
+---
+
+##  Projeyi Çalıştırma Rehberi
+
+Bu proje Entity Framework Core Migration yöntemiyle geliştirildiği için veritabanı ilk çalıştırmada otomatik olarak oluşturulabilir.
+
+### 1️⃣ Gereksinimler
+- .NET 8 SDK  
+- Microsoft SQL Server veya SQL Server Express  
+- Node.js 18+  
+- NPM (veya Yarn)
+
+---
+
+### 2️⃣ Klonla
+```bash
+git clone https://github.com/Suleeo/ProductApi.git
+cd ProductApi
+````
+
+---
+
+### 3️⃣ Veritabanını Oluştur (EF Core Migration)
+
+```bash
+dotnet tool install --global dotnet-ef   # (eğer EF aracı yüklü değilse)
+dotnet ef database update
+```
+
+>  Bu komut `appsettings.json` içindeki bağlantı bilgisine göre **ProductDb** veritabanını otomatik olarak oluşturur.
+
+---
+
+### 4️⃣ Backend’i Başlat
+
+```bash
+dotnet run
+```
+
+Uygulama şu adreste çalışır:
+➡️ `https://localhost:7245`
+
+---
+
+### 5️⃣ Frontend’i Başlat
+
+```bash
+cd frontend
+npm install
+echo "NEXT_PUBLIC_API_URL=https://localhost:7245" > .env.local
+npm run dev
+```
+
+Tarayıcıda aç:
+➡️ `http://localhost:3000`
+
+### ✅ Test Edildiği Ortam
+
+* **Backend:** ASP.NET Core 8.0
+* **Frontend:** Next.js 14
+* **Veritabanı:** SQL Server
+* **OS:** Windows 10
+* **IDE:** Visual Studio 2022 & VS Code
+
+---
+
 ##  Lisans
 
 Bu proje **MIT Lisansı** ile lisanslanmıştır.
