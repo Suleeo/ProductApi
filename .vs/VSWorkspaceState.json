@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\backend",
+    "\\backend\\.github",
+    "\\backend\\ProductApi",
+    "\\backend\\ProductApi\\Controllers",
+    "\\backend\\ProductApi\\Data",
+    "\\backend\\ProductApi\\Models",
+    "\\backend\\ProductApi\\Properties",
+    "\\backend\\ProductApi\\Repositories",
+    "\\backend\\ProductApi\\Services"
+  ],
+  "SelectedNode": "\\backend\\ProductApi",
+  "PreviewInSolutionExplorer": false
+}
